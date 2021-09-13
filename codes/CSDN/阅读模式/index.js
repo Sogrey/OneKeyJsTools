@@ -16,6 +16,13 @@ var displayNoneElements = function (eles) {
     }
 }
 
+String.prototype.startWith = function (endStr) {
+    var d = this.length - endStr.length;
+    return (endStr.length > 0 && d >= 0 && this.indexOf(endStr) == 0)
+}
+
+//'https://blog.csdn.net/';'https://blog.csdn.net/weixin_39709134/article/details/120230960'.startWith(CsdnBlogHost)
+
 // regCsdnBlogHost.test('https://blog.csdn.net/weixin_39709134/article/details/120230960');
 
 if (!regCsdnBlogHost.test(document.location.href)) { // 非CSDN Blog
