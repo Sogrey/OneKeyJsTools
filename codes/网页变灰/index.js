@@ -10,12 +10,12 @@ function appendGrayStyle() {
     if(getElement(eleId)) return;
 
     var style = document.createElement('style');
-    style.innerHTML = `
-        html {
-            filter: grayscale(100%);
-            -webkit-filter: grayscale(100%);
-        }
-    `;
+    style.innerHTML = [
+    "html {",
+    "    filter: grayscale(100%);",
+    "    -webkit-filter: grayscale(100%);",
+    "}",
+    ].join('\n');
 
     style.setAttribute('id',styleId);
     document.head.appendChild(style);

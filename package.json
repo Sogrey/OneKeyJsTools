@@ -4,6 +4,8 @@
   "description": "One click JS tool",
   "main": "index.js",
   "scripts": {
+    "release":"node release.js",
+    "deploy":"bash deploy.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
