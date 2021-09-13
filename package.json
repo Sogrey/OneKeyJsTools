@@ -1,0 +1,22 @@
+{
+  "name": "onekeyjstools",
+  "version": "0.0.1",
+  "description": "One click JS tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sogrey/OneKeyJsTools.git"
+  },
+  "author": "Sogrey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sogrey/OneKeyJsTools/issues"
+  },
+  "homepage": "https://github.com/Sogrey/OneKeyJsTools#readme",
+  "dependencies": {
+    "uglify-js": "^3.14.2"
+  }
+}

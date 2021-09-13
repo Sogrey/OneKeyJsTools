@@ -1,4 +1,4 @@
-var CsdnBlogHost = 'https://blog.csdn.net';
+var CsdnBlogHost = 'https://blog.csdn.net/';
 var regCsdnBlogHost = /https:\/\/blog\.csdn\.net\//g;
 
 // var location = document.location;
@@ -21,9 +21,17 @@ var displayNoneElements = function (eles) {
 if (!regCsdnBlogHost.test(document.location.href)) { // 非CSDN Blog
     alert(`此插件仅支持 ${CsdnBlogHost}`);
 } else {
-    // 打开阅读更多
-    //? 判断当前用户是否登录csdn
-    // getElement('.btn-readmore').click();
+    // 文章内容铺满页面
+    getElement('main').style.width = '100%';
+
+    if (getElement('.btn-readmore')) { // 文章很长需要点击阅读更多
+        // 打开阅读更多
+        if (getElement('.btn-readmore.no-login')) { //未登录
+            alert('检测到您未登录CSDN,需要登录后点击“阅读更多”才能看到完整文章。');
+        } else { // 已登录
+            getElement('.btn-readmore').click();
+        }
+    }
 
     // 隐藏aside边栏
     // getElement('aside').style.display = 'none';
@@ -37,7 +45,4 @@ if (!regCsdnBlogHost.test(document.location.href)) { // 非CSDN Blog
 
     // footer
     displayNoneElements(getElementAll('.blog-footer-bottom'));
-
-    // 文章内容铺满页面
-    getElement('main').style.width = '100%';
 }
