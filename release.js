@@ -36,7 +36,7 @@ function buildOne(flieIn, fileOut) {
     // console.log(result.code);  // minified output: function add(n,d){return n+d}
 
     fs.writeFileSync(fileOut, result.code, 'utf8');
-    console.log('压缩完成，用时', formatDuring(new Date().getTime() - time), fileOut);
+    console.log('压缩完成，用时', formatDuring(new Date().getTime() - time), '=>', fileOut);
 }
 
 function readFileList(dir, sourceFilesList = [], minFilesList = []) {
@@ -62,7 +62,7 @@ var minFilesList = [];
 readFileList(__dirname + "/codes/", sourceFilesList, minFilesList);
 // console.log("source", sourceFilesList);
 // console.log("min", minFilesList);
-console.log("找到源文件",sourceFilesList.length,'个', sourceFilesList,'\n');
+console.log("找到源文件", sourceFilesList.length, '个', sourceFilesList, '\n');
 
 if (sourceFilesList.length > 0)
     for (let i = 0; i < sourceFilesList.length; i++) {
