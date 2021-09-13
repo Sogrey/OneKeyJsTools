@@ -19,7 +19,9 @@ echo -e "\033[32;40m [1/2] \033[0m Compress source codes."
 
 npm run release
 
+echo -e ""
 echo -e "\033[32;40m [2/2] \033[0m commit 2 main branch"
+echo -e ""
 
 git init
 git add -A
