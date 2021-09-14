@@ -22,7 +22,10 @@ function buildOne(flieIn, fileOut) {
     var origCode = fs.readFileSync(flieIn, 'utf8');
 
     var options = {
-        warnings: true
+        warnings: true,
+        mangle: true,
+        compress: {},
+        mangle: true,
     };
 
     console.log('正在压缩', flieIn);
