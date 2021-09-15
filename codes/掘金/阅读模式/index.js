@@ -9,7 +9,7 @@
  *   https://juejin.cn/news/7008021418877124621
  *
  */
-
+/**title:掘金-阅读模式**/ // <--- 此行必须，不得缺失
 
 /** tools */
 var getElement = function (eleId) {

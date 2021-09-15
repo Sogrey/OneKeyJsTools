@@ -6,7 +6,7 @@
  * 示例页面：
  *   https://www.jianshu.com/p/cac06311888c
  */
-
+/**title:简书-阅读模式**/ // <--- 此行必须，不得缺失
 
 /** tools */
 var getElement = function (eleId) {

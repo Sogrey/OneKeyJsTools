@@ -8,7 +8,7 @@
  *   https://www.zhihu.com/question/49090321
  *   https://zhuanlan.zhihu.com/p/261355918
  */
-
+/**title:知乎-阅读模式**/ // <--- 此行必须，不得缺失
 
 /** tools */
 var getElement = function (eleId) {
@@ -46,7 +46,7 @@ if (regZhiHuQuestionHost.test(document.location.href)) { // 知乎question
     displayNoneElements(getElementAll('.Sticky'));
 } else if (regZhiHuZhuanLanHost.test(document.location.href)) { // 知乎专栏
     // 扩大文章模块宽度
-    getElement('.Post-RichTextContainer').style.width = "70%";    
+    getElement('.Post-RichTextContainer').style.width = "70%";
 
     displayNoneElements(getElementAll('.Recommendations-Main'));
 

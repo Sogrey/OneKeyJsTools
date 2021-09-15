@@ -1,3 +1,5 @@
+/**title:CSDN-阅读模式**/ // <--- 此行必须，不得缺失
+
 var CsdnBlogHost = 'https://blog.csdn.net/';
 var regCsdnBlogHost = /https:\/\/blog\.csdn\.net\//g;
 

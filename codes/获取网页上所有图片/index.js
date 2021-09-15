@@ -1,3 +1,6 @@
+/**title:获取页面图片**/  // <--- 此行必须，不得缺失
+
+
 // 图片格式过滤
 // 是否懒加载? 懒加载链接属性字段
 String.prototype.endWith = function (endStr) {
@@ -6,7 +9,7 @@ String.prototype.endWith = function (endStr) {
 }
 
 var isImage = function (img) {
-    return img && img.src && 
+    return img && img.src &&
         (
             img.src.endsWith('.jpg') ||
             img.src.endsWith('.jpeg') ||

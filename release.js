@@ -21,6 +21,14 @@ function formatDuring(mss) {
 function buildOne(flieIn, fileOut) {
     var origCode = fs.readFileSync(flieIn, 'utf8');
 
+    var reg = /(?<=\/\*\*title:).*(?=\*\*\/)/;
+    // var result = reg.exec("/**title:简书-阅读模式**/");
+    var result = reg.exec(origCode);
+    var title = result[0];
+    var name = `/**title:${title}**/`;
+
+    console.log('正在压缩', title, flieIn);
+
     var options = {
         warnings: true,
         mangle: true,
@@ -28,7 +36,6 @@ function buildOne(flieIn, fileOut) {
         mangle: true,
     };
 
-    console.log('正在压缩', flieIn);
     var time = new Date().getTime();
 
     var result = UglifyJS.minify(origCode, options);
@@ -38,7 +45,7 @@ function buildOne(flieIn, fileOut) {
         console.log('result.warnings', flieIn, result.warnings); // [ 'Dropping unused variable u [0:1,18]' ]
     // console.log(result.code);  // minified output: function add(n,d){return n+d}
 
-    fs.writeFileSync(fileOut, result.code, 'utf8');
+    fs.writeFileSync(fileOut, name + result.code, 'utf8');
     console.log('压缩完成，用时', formatDuring(new Date().getTime() - time), '=>', fileOut);
 }
 
