@@ -66,6 +66,9 @@ if (href.startsWith(githubMinJsHost) && href.endsWith(jsEndWith)) { // Github
 
     var aEle = createStyle(jsMinText);
     divHere.appendChild(aEle);
+
+
+    // var jsMinText = document.querySelector('.highlight .line').innerText.replace(/[\r\n]$/, ''); // gitee
 } else {
     alert(`此插件仅支持 ${githubMinJsHostPath}`);
 }
