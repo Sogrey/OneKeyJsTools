@@ -41,7 +41,7 @@ function createStyle(jsMinText) {
     // 创建 style
     var styleEle = document.createElement('style');
     styleEle.innerText =
-        ".OneKeyInstall_a { position:absolute;top:7px;left:200px;width:100px;height:30px;line-height:30px;text-align:center;background-color:#24aee6;cursor:move;font-size:0;border-radius:5px;text-decoration:none !important;z-index:999999; } .OneKeyInstall_a::before { content:'拖到收藏夹';font-size:16px;color:#FFF; }";
+        ".OneKeyInstall_a { position:absolute;top:7px;left:200px;width:100px;height:30px;line-height:30px;text-align:center;background-color:#24aee6;cursor:move;font-size:0;border-radius:5px;text-decoration:none !important;z-index:999999;margin-left: 30px;} .OneKeyInstall_a::before { content:'拖到收藏夹';font-size:16px;color:#FFF; }";
     document.head.appendChild(styleEle);
 
     // 创建 a 标签
