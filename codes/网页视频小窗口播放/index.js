@@ -3,6 +3,10 @@
  */
 /**title:网页视频小窗口播放**/ // <--- 此行必须，不得缺失
 
+// TODO 
+// iframe 内视频
+// video或其父布局本身就有鼠标移入事件
+
 /** tools */
 var getElement = function (eleId) {
     return document.querySelector(eleId);
@@ -104,9 +108,10 @@ function removeALink() {
 }
 
 var addBtn = function (event) {
-    // console.log('mouseover',event.path[0])
+    console.log('mouseover',event.path[0])
     var video = event.path[0];
     video.parentNode.appendChild(createStyle(video));
+    event.stopPropagation();
 }
 var removeBtn = function (event) {
     // 延迟消失
@@ -115,6 +120,7 @@ var removeBtn = function (event) {
     setTimeout(function () {
         return removeALink();
     }, 3000);
+    event.stopPropagation();
 }
 
 var videos = getElementAll('video');
