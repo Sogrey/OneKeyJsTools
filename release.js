@@ -46,7 +46,7 @@ function buildOne(flieIn, fileOut) {
     // console.log(result.code);  // minified output: function add(n,d){return n+d}
 
     fs.writeFileSync(fileOut, name + result.code, 'utf8');
-    console.log('压缩完成，用时', formatDuring(new Date().getTime() - time), '=>', fileOut);
+    console.log('压缩完成，用时 ', formatDuring(new Date().getTime() - time), '=>', fileOut);
 }
 
 function readFileList(dir, sourceFilesList = [], minFilesList = []) {

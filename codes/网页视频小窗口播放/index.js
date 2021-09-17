@@ -3,6 +3,10 @@
  */
 /**title:网页视频小窗口播放**/ // <--- 此行必须，不得缺失
 
+/**
+ * https://haokan.baidu.com/
+ */
+
 // TODO 
 // iframe 内视频
 // video或其父布局本身就有鼠标移入事件
@@ -72,14 +76,14 @@ function openSmallWindow(video) {
 var styleId = 'NewVideoWindow_a_style';
 var aId = 'NewVideoWindow_a';
 
-function createStyle(video) {
+function createStyle(doc, video) {
     // 创建 style    
     if (!getElement(`#${styleId}`)) {
         var styleEle = document.createElement('style');
         styleEle.id = styleId;
         styleEle.innerText =
             ".NewVideoWindow_a { position:absolute;top:7px;left:7px;width:100px;height:30px;line-height:30px;text-align:center;background-color:#24aee6;cursor: pointer;font-size:14px;border-radius:5px;text-decoration:none !important;z-index:999999;color:#fff;}";
-        document.head.appendChild(styleEle);
+        doc.head.appendChild(styleEle);
     }
 
     var aLink = getElement(`#${aId}`);
@@ -87,7 +91,7 @@ function createStyle(video) {
         aLink.parentNode.removeChild(aLink);
     }
     // 创建 a 标签
-    var NewVideoWindow_a = document.createElement('a');
+    var NewVideoWindow_a = doc.createElement('a');
     NewVideoWindow_a.id = aId;
     NewVideoWindow_a.setAttribute('class', 'NewVideoWindow_a');
 
@@ -100,25 +104,25 @@ function createStyle(video) {
     return NewVideoWindow_a;
 }
 
-function removeALink() {
-    var aLink = getElement(`#${aId}`);
+function removeALink(doc) {
+    var aLink =doc.querySelector(`#${aId}`);
     if (aLink) {
         aLink.parentNode.removeChild(aLink);
     }
 }
 
-var addBtn = function (event) {
-    console.log('mouseover',event.path[0])
+var addBtn = function (doc, event) {
+    console.log('mouseover', event.path[0])
     var video = event.path[0];
-    video.parentNode.appendChild(createStyle(video));
+    video.parentNode.appendChild(createStyle(doc, video));
     event.stopPropagation();
 }
-var removeBtn = function (event) {
+var removeBtn = function (doc,event) {
     // 延迟消失
     // console.log('mouseout', event.path[0])
 
     setTimeout(function () {
-        return removeALink();
+        return removeALink(doc);
     }, 3000);
     event.stopPropagation();
 }
@@ -126,7 +130,29 @@ var removeBtn = function (event) {
 var videos = getElementAll('video');
 if (videos && videos.length > 0) {
     videos.forEach(video => {
-        addMethod(video, 'mouseover', addBtn);
-        addMethod(video, 'mouseout', removeBtn);
+        addMethod(video, 'mouseover', function (event) {            
+            console.log('mouseover');
+            addBtn(document, event);
+        });
+        addMethod(video, 'mouseout', function (event) {
+            removeBtn(document, event);
+        });
+    });
+}
+
+// ??? Fix
+var iframes = getElementAll('iframe');
+if (iframes && iframes.length > 0) {
+    iframes.forEach(iframe => {
+        var videos = iframe.contentWindow.document.querySelectorAll('video');
+        // console.log(videos);
+        videos.forEach(video => {
+            addMethod(video, 'mouseover', function (event) {
+                addBtn(iframe.contentWindow.document, event);
+            });
+            addMethod(video, 'mouseout', function (event) {
+                removeBtn(iframe.contentWindow.document, event);
+            });
+        });
     });
 }
