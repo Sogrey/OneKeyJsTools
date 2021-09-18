@@ -4,7 +4,57 @@
 /**title:网页视频小窗口播放**/ // <--- 此行必须，不得缺失
 
 /**
+ * 不支持：
+ * https://www.bilibili.com/
+ * https://v.qq.com/ (自带画中画)
+ * https://youku.com/ (自带画中画)
+ * https://tv.sohu.com/ (自带画中画)
+ * https://tudou.com/ (自带画中画)
+ * http://bf.fun.tv (不带画中画)
+ * http://video.sina.com.cn/  (不带画中画)
+ * http://www.le.com/ (Blocked a frame with origin "xxx" from accessing a cross-origin frame.)
+ * http://www.funshion.com/ (Blocked a frame with origin "xxx" from accessing a cross-origin frame.) 
+ * 直播： 
+ * https://www.yy.com/
+ * http://star.longzhu.com/
+ * https://www.huya.com/ (Blocked a frame with origin "xxx" from accessing a cross-origin frame.)
+ * https://www.douyu.com/
+ * http://www.kumi.cn/ (Blocked a frame with origin "xxx" from accessing a cross-origin frame.)
+ * 
+ * 支持：
+ * https://ent.sina.com.cn/
+ * http://mtime.com/
+ * https://www.xinpianchang.com/
+ * https://weibo.com/
+ * http://v.iqilu.com/
+ * http://www.zjstv.com/
+ * https://www.gdtv.cn/
+ * https://www.btime.com/
+ * http://v.jstv.com/
+ * http://www.ahtv.cn/
+ * http://www.sctv.com/
+ * https://www.1905.com/
+ * https://v.163.com/
+ * https://www.wasu.cn/
+ * https://www.yinyuetai.com/
+ * https://www.mgtv.com/
+ * https://v.cctv.com/
+ * https://www.ku6.com/
+ * https://v.ifeng.com/
+ * https://www.iqiyi.com/
+ * http://v.pptv.com/
  * https://haokan.baidu.com/
+ * https://www.56.com/
+ * https://qf.56.com/
+ * https://www.boosj.com/
+ * https://videoshub.com/
+ * https://www.mtv.com/
+ * 直播：
+ * https://v.6.cn/
+ * https://live.qq.com/
+ * https://fanxing.kugou.com/
+ * https://qf.56.com/
+ * https://www.yizhibo.com/
  */
 
 // TODO 

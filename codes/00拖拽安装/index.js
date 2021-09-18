@@ -31,11 +31,12 @@ String.prototype.endWith = function (endStr) {
 /** main */
 
 var githubMinJsHostPath = "https://github.com/Sogrey/OneKeyJsTools/blob/main/codes/*/*.min.js";
+var giteeMinJsHostPath = "https://gitee.com/Sogrey/OneKeyJsTools/blob/main/codes/*/*.min.js";
 var githubMinJsHost = "https://github.com/Sogrey/OneKeyJsTools/blob/main/codes/";
+var giteeMinJsHost = "https://gitee.com/Sogrey/OneKeyJsTools/blob/main/codes/";
 var jsEndWith = ".min.js"; // 以 .min.js 结束的压缩js
 
 var href = document.location.href;
-
 
 function createStyle(jsMinText) {
     // 创建 style
@@ -66,9 +67,14 @@ if (href.startsWith(githubMinJsHost) && href.endsWith(jsEndWith)) { // Github
 
     var aEle = createStyle(jsMinText);
     divHere.appendChild(aEle);
+    
+} else if (href.startsWith(giteeMinJsHost) && href.endsWith(jsEndWith)) { // Gitee
+    var divHere = document.querySelector('.contributor-description');
+    var jsMinText = document.querySelector('.highlight .line').innerText;
 
-
-    // var jsMinText = document.querySelector('.highlight .line').innerText.replace(/[\r\n]$/, ''); // gitee
+    var aEle = createStyle(jsMinText);
+    divHere.appendChild(aEle);
+    
 } else {
-    alert(`此插件仅支持 ${githubMinJsHostPath}`);
+    alert(`此插件仅支持 ${githubMinJsHostPath} 和 ${giteeMinJsHostPath}`);
 }

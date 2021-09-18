@@ -38,6 +38,8 @@ var regZhiHuZhuanLanHost = /https:\/\/zhuanlan\.zhihu\.com\//g;
 
 if (regZhiHuQuestionHost.test(document.location.href)) { // 知乎question
     // 扩大文章模块宽度
+    
+    getElement('.ListShortcut').style.width = "100%";
     getElement('.Question-mainColumn').style.width = "100%";
 
     getElement('.Question-sideColumn').style.width = "0%";
