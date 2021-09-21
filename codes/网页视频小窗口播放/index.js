@@ -5,6 +5,8 @@
 
 /**
  * 不支持：
+ * https://www.douyin.com/
+ * https://www.kuaishou.com/
  * https://www.bilibili.com/
  * https://v.qq.com/ (自带画中画)
  * https://youku.com/ (自带画中画)
@@ -22,6 +24,8 @@
  * http://www.kumi.cn/ (Blocked a frame with origin "xxx" from accessing a cross-origin frame.)
  * 
  * 支持：
+ * https://krcom.cn/
+ * https://www.ixigua.com/
  * https://ent.sina.com.cn/
  * http://mtime.com/
  * https://www.xinpianchang.com/
