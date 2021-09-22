@@ -194,11 +194,11 @@ function keyUp(e, doc) {
     var currKey = 0,
         e = e || event;
     currKey = e.keyCode || e.which || e.charCode;
-    var keyName = String.fromCharCode(currKey);
+    // var keyName = String.fromCharCode(currKey);
 
     // console.log('按键码: ', currKey, '字符: ', keyName);
 
-    if (currKey == 86 && keyName == "V") {
+    if (currKey == 86/* && keyName == "V"*/) {
         addBtn(doc, e);
     }
 }
