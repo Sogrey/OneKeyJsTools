@@ -6,7 +6,7 @@
  * 示例页面：
  *   https://blog.csdn.net/weixin_39709134/article/details/120230960
  */
-/**title:CSDN-阅读模式**/ // <--- 此行必须，不得缺失
+/**title:CSDN-阅读模式**/ // <--- 此行必需，不得缺失
 
 var CsdnBlogHost = 'https://blog.csdn.net/';
 var regCsdnBlogHost = /https:\/\/blog\.csdn\.net\//g;

@@ -1,10 +1,14 @@
 /**
  * 网页视频小窗口播放
  */
-/**title:网页视频小窗口播放**/ // <--- 此行必须，不得缺失
+/**title:网页视频小窗口播放**/ // <--- 此行必需，不得缺失
 
 /**
  * 不支持：
+ * https://www.9do9.com/
+ * https://www.leyingke.com/
+ * https://www.yongxiaoran.com/
+ * http://baecc.org/
  * https://www.douyin.com/
  * https://www.kuaishou.com/
  * https://www.bilibili.com/
@@ -24,6 +28,11 @@
  * http://www.kumi.cn/ (Blocked a frame with origin "xxx" from accessing a cross-origin frame.)
  * 
  * 支持：
+ * http://www.sczhsj.com/
+ * https://www.918sjw.com/
+ * http://www.sxctdlkj.com/
+ * https://www.nmgk.com/
+ * http://www.hblonghe.com/
  * https://krcom.cn/
  * https://www.ixigua.com/
  * https://ent.sina.com.cn/
@@ -159,19 +168,19 @@ function createStyle(doc, video) {
 }
 
 function removeALink(doc) {
-    var aLink =doc.querySelector(`#${aId}`);
+    var aLink = doc.querySelector(`#${aId}`);
     if (aLink) {
         aLink.parentNode.removeChild(aLink);
     }
 }
 
 var addBtn = function (doc, event) {
-    console.log('mouseover', event.path[0])
+    // console.log('mouseover', event.path[0])
     var video = event.path[0];
     video.parentNode.appendChild(createStyle(doc, video));
     event.stopPropagation();
 }
-var removeBtn = function (doc,event) {
+var removeBtn = function (doc, event) {
     // 延迟消失
     // console.log('mouseout', event.path[0])
 
@@ -181,16 +190,33 @@ var removeBtn = function (doc,event) {
     event.stopPropagation();
 }
 
+function keyUp(e, doc) {
+    var currKey = 0,
+        e = e || event;
+    currKey = e.keyCode || e.which || e.charCode;
+    var keyName = String.fromCharCode(currKey);
+
+    // console.log('按键码: ', currKey, '字符: ', keyName);
+
+    if (currKey == 86 && keyName == "V") {
+        addBtn(doc, e);
+    }
+}
+
 var videos = getElementAll('video');
 if (videos && videos.length > 0) {
     videos.forEach(video => {
-        addMethod(video, 'mouseover', function (event) {            
-            console.log('mouseover');
+        addMethod(video, 'mouseover', function (event) {
+            // console.log('mouseover');
             addBtn(document, event);
         });
         addMethod(video, 'mouseout', function (event) {
             removeBtn(document, event);
         });
+
+        document.onkeyup = function (e) {
+            keyUp(e, document);
+        };
     });
 }
 
@@ -208,5 +234,9 @@ if (iframes && iframes.length > 0) {
                 removeBtn(iframe.contentWindow.document, event);
             });
         });
+
+        iframe.contentWindow.document.onkeyup = function (e) {
+            keyUp(e, iframe.contentWindow.document);
+        };
     });
 }

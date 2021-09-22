@@ -1,4 +1,4 @@
-/**title:页面变灰**/ // <--- 此行必须，不得缺失
+/**title:页面变灰**/ // <--- 此行必需，不得缺失
 
 var styleId = 'sogrey-htmlGray';
 var eleId = `#${styleId}`;

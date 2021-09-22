@@ -3,7 +3,7 @@
  * 
  * 灵感来自于：https://gitee.com/imba97/js，此脚本有所修改
  */
-/**title:拖拽安装**/ // <--- 此行必须，不得缺失
+/**title:拖拽安装**/ // <--- 此行必需，不得缺失
 
 /** tools */
 var getElement = function (eleId) {

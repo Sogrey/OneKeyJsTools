@@ -8,7 +8,7 @@
  *   https://www.zhihu.com/question/49090321
  *   https://zhuanlan.zhihu.com/p/261355918
  */
-/**title:知乎-阅读模式**/ // <--- 此行必须，不得缺失
+/**title:知乎-阅读模式**/ // <--- 此行必需，不得缺失
 
 /** tools */
 var getElement = function (eleId) {
