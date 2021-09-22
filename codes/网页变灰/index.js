@@ -1,5 +1,5 @@
 /**title:页面变灰**/ // <--- 此行必需，不得缺失
-
+// https://j11y.io/demos/grayscale/grayscale.js
 var styleId = 'sogrey-htmlGray';
 var eleId = `#${styleId}`;
 
@@ -14,8 +14,11 @@ function appendGrayStyle() {
     var style = document.createElement('style');
     style.innerHTML = [
         "html {",
-        "    filter: grayscale(100%);",
-        "    -webkit-filter: grayscale(100%);",
+        "    filter: grayscale(100%);/*火狐*/",
+        "    -webkit-filter:grayscale(100%);/*chrome*/",
+        "}",
+        "body{",
+        "    filter:gray; /*IE7-9*/",
         "}",
     ].join('\n');
 
