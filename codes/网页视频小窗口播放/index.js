@@ -5,6 +5,7 @@
 
 /**
  * 不支持：
+ * http://www.sczhsj.com/
  * https://www.9do9.com/
  * https://www.leyingke.com/
  * https://www.yongxiaoran.com/
@@ -28,7 +29,6 @@
  * http://www.kumi.cn/ (Blocked a frame with origin "xxx" from accessing a cross-origin frame.)
  * 
  * 支持：
- * http://www.sczhsj.com/
  * https://www.918sjw.com/
  * http://www.sxctdlkj.com/
  * https://www.nmgk.com/
