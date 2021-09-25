@@ -1,7 +1,8 @@
 /**
  * 163邮箱 (https://mail.163.com/) 清空邮箱
  * 
- * 注意：临时用的脚本，163邮箱满了，新邮件无法接收，邮箱里基本都是订阅邮件无关紧要，特写此脚本清空邮箱，慎用！！！
+ * 注意：临时用的脚本,逻辑也并不严谨。
+ * 163邮箱满了，新邮件无法接收，邮箱里基本都是订阅邮件无关紧要，特写此脚本清空邮箱，慎用！！！
  */
 /**title:163邮箱-清空邮箱**/ // <--- 此行必需，不得缺失
 
@@ -18,7 +19,6 @@ var displayNoneElements = function (eles) {
     }
 }
 
-
 var emailNumStrong = getElement('.nui-title-tips.nui-txt-tips>.nui-txt-link.js-component-link>strong');
 
 function deleteAPage() {
@@ -33,9 +33,7 @@ function deleteAPage() {
             if(deleteBtn){
                 deleteBtn.click();
             }
-
-
-        
+            
             setTimeout(function (){
                 deleteAPage()
             }, 3000);   
