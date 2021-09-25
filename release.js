@@ -45,7 +45,7 @@ function buildOne(flieIn, fileOut) {
         console.log('result.warnings', flieIn, result.warnings); // [ 'Dropping unused variable u [0:1,18]' ]
     // console.log(result.code);  // minified output: function add(n,d){return n+d}
 
-    var CONSOLE_BADGE = 'console.log("\\n %c OneKeyJsTools %c @Sogrey \\n\\n","color: #fadfa3; background: #030307; padding:5px 0;","background: #fadfa3; padding:5px 0;");';
+    var CONSOLE_BADGE = 'console.log("\\n %c '+title+' %c @Sogrey \\n\\n","color: #fadfa3; background: #030307; padding:5px 0;","background: #fadfa3; padding:5px 0;");';
 
     fs.writeFileSync(fileOut, name + CONSOLE_BADGE + result.code, 'utf8');
     console.log('压缩完成，用时 ', formatDuring(new Date().getTime() - time), '=>', fileOut);
