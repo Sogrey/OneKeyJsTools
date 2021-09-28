@@ -43,7 +43,7 @@ function buildOne(flieIn, fileOut) {
         console.log('error', flieIn, result.error); // runtime error, or `undefined` if no error
     if (result.warnings)
         console.log('result.warnings', flieIn, result.warnings); // [ 'Dropping unused variable u [0:1,18]' ]
-    // console.log(result.code);  // minified output: function add(n,d){return n+d}
+    // console.log(result.code);  
 
     var CONSOLE_BADGE = 'console.log("\\n %c '+title+' %c @Sogrey \\n\\n","color: #fadfa3; background: #030307; padding:5px 0;","background: #fadfa3; padding:5px 0;");';
 
