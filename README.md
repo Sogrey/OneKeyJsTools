@@ -1,6 +1,8 @@
 # OneKeyJsTools
 One click JS tool
 
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/Sogrey/OneKeyJsTools)
+
 灵感来自于：
 
 - https://gitee.com/imba97/js
