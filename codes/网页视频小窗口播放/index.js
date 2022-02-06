@@ -29,6 +29,7 @@
  * http://www.kumi.cn/ (Blocked a frame with origin "xxx" from accessing a cross-origin frame.)
  * 
  * 支持：
+ * https://www.csjyjz.com/
  * https://91mjw.com/
  * https://www.918sjw.com/
  * http://www.sxctdlkj.com/
