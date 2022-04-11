@@ -5,6 +5,7 @@
 
 // 在此追加广告div的class或id css选择器
 var adsClasses = [
+    '#photo-header-content',
     '.ad',
     '.global_video_bottom_dbtc',
     '.photo-content-title-foot',
