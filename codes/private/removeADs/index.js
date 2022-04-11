@@ -3,6 +3,7 @@
  */
 /**title:暴力移除广告**/ // <--- 此行必需，不得缺失
 
+// 在次追加广告div的class或id css选择器
 var adsClasses = [
     '.ad',
     '.global_video_bottom_dbtc',
@@ -11,9 +12,6 @@ var adsClasses = [
     '.close_discor',
     '.section-banner'
 ];
-
-var mainContent_styleIdName = "sogrey-removeAd-main";
-var mainContent_styleId = `#${mainContent_styleIdName}`;
 
 var getElement = function (eleId) {
     return document.querySelector(eleId);
