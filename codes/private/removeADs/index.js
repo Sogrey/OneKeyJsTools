@@ -3,7 +3,7 @@
  */
 /**title:暴力移除广告**/ // <--- 此行必需，不得缺失
 
-// 在次追加广告div的class或id css选择器
+// 在此追加广告div的class或id css选择器
 var adsClasses = [
     '.ad',
     '.global_video_bottom_dbtc',
