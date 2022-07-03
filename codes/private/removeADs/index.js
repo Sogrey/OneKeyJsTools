@@ -11,7 +11,7 @@ var adsClasses = [
     '.photo-content-title-foot',
     '.top-title-container',
     '.close_discor',
-    '.section-banner'
+    '.section-banner',
 ];
 
 var getElement = function (eleId) {
