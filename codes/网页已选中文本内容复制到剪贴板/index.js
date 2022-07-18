@@ -49,3 +49,5 @@ var run = function () {
         copyToClipBoard(text);
     }
 }
+
+run();
