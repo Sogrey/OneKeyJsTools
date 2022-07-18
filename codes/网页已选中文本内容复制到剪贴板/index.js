@@ -57,6 +57,12 @@ function copyToClipBoard(_sTxt) {
             var clipid = Components.interfaces.nsIClipboard;
             if (!clip) return false;
             clip.setData(trans, null, clipid.kGlobalClipboard);
+        }else{
+            var inputEle = document.createElement('textarea');
+            inputEle.value = _sTxt;
+            inputEle.focus();
+            inputEle.select();
+            document.execCommand('copy');
         }
     } catch (e) { console.error(e); }
 }
