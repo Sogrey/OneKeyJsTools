@@ -183,6 +183,10 @@ function initMediaRecorder(stream) {
 
 function reset() {
     stopRecord()
+    const video = document.querySelector(`video#${SogreyRecordHtmlRootId}_preview`);
+    if(video){
+        video.parentNode.removeChild(video);
+    }
     mediaRecorder = null
     mediaStream = null
     videoBuffer = []
@@ -219,6 +223,7 @@ function replay() {
     const video = document.createElement("video");
     document.body.append(video)
     const blob = new Blob(videoBuffer, { type: "video/webm" });
+    video.id = SogreyRecordHtmlRootId+"_preview"
     video.src = window.URL.createObjectURL(blob);
     video.srcObject = null;
     video.controls = true;
