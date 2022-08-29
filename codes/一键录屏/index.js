@@ -125,6 +125,12 @@ function initEvent() {
     addMethod(EleRecording, 'click', startRecord)
     addMethod(ElePlay, 'click', replay)
     addMethod(EleDownload, 'click', download)
+    addMethod(EleSettings, 'click', function () {
+        alert('敬请期待');
+    })
+    addMethod(EleGithub, 'click', function () {
+        window.open('https://github.com/Sogrey/OneKeyJsTools', '_blank');
+    })
 }
 initHtmlElements();
 
