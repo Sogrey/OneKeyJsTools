@@ -1,4 +1,6 @@
 
+/**title:一键录屏**/ // <--- 此行必需，不得缺失
+
 /** tools */
 var getElement = function (eleId) {
     return document.querySelector(eleId);
@@ -80,12 +82,15 @@ function initHtmlElements() {
   #${SogreyRecordHtmlRootId} ul {list-style: none;margin: 0;padding: 0;perspective: 1000px;  }
   #${SogreyRecordHtmlRootId} ul li {display: block;background-color: #333;height: 4em;padding: 1em 1.5em;position: relative;-webkit-transition: webkit-transform 0.5s, background-color 0.5s, color 0.5s;transition: transform 0.5s, background-color 0.5s, color 0.5s;  }
   #${SogreyRecordHtmlRootId} ul li:nth-child(1) {background-color: #00aced;  }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(2) {background-color: #3b5998;transform: rotateY(-90deg);transform-origin: center right;/*transform-origin: 50% 100%;alternative using percentages */  }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(2) {background-color: #3b5998;transform: rotateY(-90deg);transform-origin: center right;  }
   #${SogreyRecordHtmlRootId} ul li:nth-child(3) {background-color: #00a300;transform: rotateY(-90deg);transform-origin: center right;  }
   #${SogreyRecordHtmlRootId} ul li:nth-child(4) {background-color: #1e7145;transform: rotateY(-90deg);transform-origin: center right;  }
   #${SogreyRecordHtmlRootId} ul li:nth-child(5) {background-color: #ffc40d;transform: rotateY(-90deg);transform-origin: center right;  }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(6) {background-color: #cb2027;transform: rotateY(-90deg);transform-origin: center right;  }
-  #${SogreyRecordHtmlRootId} ul li:hover {background-color: #339966;/*   -webkit-transform: translateX(10em); */ /*   transform: translateX(10em);  */ /*   transform: rotateX(0deg); */ /*   var(--bg-color) = true; */  }
+  #${SogreyRecordHtmlRootId} ul li.show:nth-child(2) {transform: rotateY(0deg);  }
+  #${SogreyRecordHtmlRootId} ul li.show:nth-child(3) {transform: rotateY(0deg);  }
+  #${SogreyRecordHtmlRootId} ul li.show:nth-child(4) {transform: rotateY(0deg);  }
+  #${SogreyRecordHtmlRootId} ul li.show:nth-child(5) {transform: rotateY(0deg);  }
+  #${SogreyRecordHtmlRootId} ul li:hover {background-color: #339966;  }
   #${SogreyRecordHtmlRootId} ul li span {display: block;color: #fff;position: absolute;font-size: 1em;line-height: 2em;height: 2em;top: 0;bottom: 0;margin: 0 auto;padding: 1em 1.5em;right: 0.16666666666667em;color: #f8f6ff;  }  
   </style>
 `;
@@ -107,8 +112,19 @@ function initHtmlElements() {
 
     initEvent()
 }
-function initEvent() {
 
+let EleRecording, ElePlay, EleSettings, EleDownload, EleGithub;
+
+function initEvent() {
+    EleRecording = document.querySelector(`#${SogreyRecordHtmlRootId} ul li:nth-child(1)`);
+    ElePlay = document.querySelector(`#${SogreyRecordHtmlRootId} ul li:nth-child(2)`);
+    EleSettings = document.querySelector(`#${SogreyRecordHtmlRootId} ul li:nth-child(3)`);
+    EleDownload = document.querySelector(`#${SogreyRecordHtmlRootId} ul li:nth-child(4)`);
+    EleGithub = document.querySelector(`#${SogreyRecordHtmlRootId} ul li:nth-child(5)`);
+
+    addMethod(EleRecording, 'click', startRecord)
+    addMethod(ElePlay, 'click', replay)
+    addMethod(EleDownload, 'click', download)
 }
 initHtmlElements();
 
@@ -153,6 +169,16 @@ function initMediaRecorder(stream) {
     };
     mediaRecorder.start();
     mediaStream = stream;
+
+    EleRecording.querySelector('i.fa').classList.remove('fa-circle')
+    EleRecording.querySelector('i.fa').classList.add('fa-stop')
+    ElePlay.classList.remove('show');
+    EleSettings.classList.remove('show');
+    EleDownload.classList.remove('show');
+    EleGithub.classList.remove('show');
+
+    removeMethod(EleRecording, 'click', startRecord)
+    addMethod(EleRecording, 'click', stop)
 };
 
 function reset() {
@@ -174,6 +200,20 @@ function stopRecord() {
     mediaRecorder && mediaRecorder.state !== 'inactive' && mediaRecorder.stop()
 }
 
+function stop() {
+    stopRecord()
+    ElePlay.classList.add('show');
+    EleSettings.classList.add('show');
+    EleDownload.classList.add('show');
+    EleGithub.classList.add('show');
+
+    EleRecording.querySelector('i.fa').classList.add('fa-circle')
+    EleRecording.querySelector('i.fa').classList.remove('fa-stop')
+
+    addMethod(EleRecording, 'click', startRecord)
+    removeMethod(EleRecording, 'click', stop)
+}
+
 // 回放录制内容
 function replay() {
     const video = document.createElement("video");
@@ -182,6 +222,11 @@ function replay() {
     video.src = window.URL.createObjectURL(blob);
     video.srcObject = null;
     video.controls = true;
+    video.style.zIndex = 999999;
+    video.style.position = 'fixed';
+    video.style.bottom = '10px';
+    video.style.left = '10px';
+    video.style.width = '500px';
     video.play();
 }
 

@@ -72,7 +72,6 @@ function copyToClipBoard(_sTxt) {
             if (!trans) return;
             trans.addDataFlavor('text/unicode');
             var str = new Object();
-            var len = new Object();
             var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
             var copytext = _sTxt;
             str.data = copytext;

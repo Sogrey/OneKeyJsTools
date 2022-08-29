@@ -4,6 +4,7 @@ var path = require("path");
 var fs = require('fs');
 var exec = require('child_process').exec;
 
+var JavaScriptObfuscator = require('javascript-obfuscator');
 var UglifyJS = require("uglify-js");
 
 
@@ -45,9 +46,30 @@ function buildOne(flieIn, fileOut) {
         console.log('result.warnings', flieIn, result.warnings); // [ 'Dropping unused variable u [0:1,18]' ]
     // console.log(result.code);  
 
-    var CONSOLE_BADGE = 'console.log("\\n %c '+title+' %c @Sogrey \\n\\n","color: #fadfa3; background: #030307; padding:5px 0;","background: #c58c0f; padding:5px 0;");';
+    var CONSOLE_BADGE = 'console.log("\\n %c ' + title + ' %c @Sogrey \\n\\n","color: #fadfa3; background: #030307; padding:5px 0;","background: #c58c0f; padding:5px 0;");';
 
-    fs.writeFileSync(fileOut, name + CONSOLE_BADGE + result.code, 'utf8');
+    const data =  CONSOLE_BADGE + result.code;
+    var obfuscationOptions = {
+        compact: true,
+        // controlFlowFlattening: true,
+        // controlFlowFlatteningThreshold: 1,
+        numbersToExpressions: true,
+        simplify: true,
+        shuffleStringArray: true,
+        splitStrings: true,
+        splitStringsChunkLength: 10,
+        stringArrayThreshold: 1,
+        // debugProtection: true,
+        // debugProtectionInterval: true
+    };
+
+    var obfuscationResult = JavaScriptObfuscator.obfuscate(data, obfuscationOptions);
+
+    // console.log(obfuscationResult.getObfuscatedCode());
+
+    var content = obfuscationResult.getObfuscatedCode();
+
+    fs.writeFileSync(fileOut, name + content, 'utf8');
     console.log('压缩完成，用时 ', formatDuring(new Date().getTime() - time), '=>', fileOut);
 }
 
