@@ -76,101 +76,30 @@ function initHtmlElements() {
 
     const style = `
   <style type="text/css">
-  #${SogreyRecordHtmlRootId} {
-    width: 4em;
-    height: 4em;
-    margin: 4em auto 0;
-    font-size: 1em;
-    line-height: 4em;
-    color: #fff;
-    font-weight: 700;
-    text-transform: uppercase;
-    top: 0;
-    bottom: 0;
-    right: 0em;
-    position: fixed;
-    align-items: center;
-    z-index: 99999;
-  }
-  #${SogreyRecordHtmlRootId} ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    perspective: 1000px;
-  }
-  #${SogreyRecordHtmlRootId} ul li {
-    display: block;
-    background-color: #333;
-    height: 4em;
-    padding: 1em 1.5em;
-    position: relative;
-    -webkit-transition: -webkit-transform 0.5s, background-color 0.5s, color 0.5s;
-    transition: transform 0.5s, background-color 0.5s, color 0.5s;
-  }
-  /*the colors of the different columns*/
-  #${SogreyRecordHtmlRootId} ul li:nth-child(1) {
-    background-color: #00aced;
-  }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(2) {
-    background-color: #3b5998;
-    transform: rotateY(-90deg);
-    transform-origin: center right;
-    /*transform-origin: 50% 100%;    alternative using percentages */
-  }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(3) {
-    background-color: #00a300;
-    transform: rotateY(-90deg);
-    transform-origin: center right;
-  }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(4) {
-    background-color: #1e7145;
-    transform: rotateY(-90deg);
-    transform-origin: center right;
-  }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(5) {
-    background-color: #ffc40d;
-    transform: rotateY(-90deg);
-    transform-origin: center right;
-  }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(6) {
-    background-color: #cb2027;
-    transform: rotateY(-90deg);
-    transform-origin: center right;
-  }
-  #${SogreyRecordHtmlRootId} ul li:hover {
-    background-color: #339966;
-    /*   -webkit-transform: translateX(10em); */
-    /*   transform: translateX(10em);  */
-    /*   transform: rotateX(0deg); */
-    /*   var(--bg-color) = true; */
-  }
-  #${SogreyRecordHtmlRootId} ul li span {
-    display: block;
-    color: #fff;
-    position: absolute;
-    font-size: 1em;
-    line-height: 2em;
-    height: 2em;
-    top: 0;
-    bottom: 0;
-    margin: 0 auto;
-    padding: 1em 1.5em;
-    right: 0.16666666666667em;
-    color: #f8f6ff;
-  }  
+  #${SogreyRecordHtmlRootId} {width: 4em;height: 4em;margin: 4em auto 0;font-size: 1em;line-height: 4em;color: #fff;font-weight: 700;text-transform: uppercase;top: 0;bottom: 0;right: 0em;position: fixed;align-items: center;z-index: 99999;  }
+  #${SogreyRecordHtmlRootId} ul {list-style: none;margin: 0;padding: 0;perspective: 1000px;  }
+  #${SogreyRecordHtmlRootId} ul li {display: block;background-color: #333;height: 4em;padding: 1em 1.5em;position: relative;-webkit-transition: webkit-transform 0.5s, background-color 0.5s, color 0.5s;transition: transform 0.5s, background-color 0.5s, color 0.5s;  }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(1) {background-color: #00aced;  }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(2) {background-color: #3b5998;transform: rotateY(-90deg);transform-origin: center right;/*transform-origin: 50% 100%;alternative using percentages */  }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(3) {background-color: #00a300;transform: rotateY(-90deg);transform-origin: center right;  }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(4) {background-color: #1e7145;transform: rotateY(-90deg);transform-origin: center right;  }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(5) {background-color: #ffc40d;transform: rotateY(-90deg);transform-origin: center right;  }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(6) {background-color: #cb2027;transform: rotateY(-90deg);transform-origin: center right;  }
+  #${SogreyRecordHtmlRootId} ul li:hover {background-color: #339966;/*   -webkit-transform: translateX(10em); */ /*   transform: translateX(10em);  */ /*   transform: rotateX(0deg); */ /*   var(--bg-color) = true; */  }
+  #${SogreyRecordHtmlRootId} ul li span {display: block;color: #fff;position: absolute;font-size: 1em;line-height: 2em;height: 2em;top: 0;bottom: 0;margin: 0 auto;padding: 1em 1.5em;right: 0.16666666666667em;color: #f8f6ff;  }  
   </style>
-    `;
+`;
 
     const html = `
   <ul>
-    <li><span><i class="fa fa-circle"></i></span></li>
-    <!--<li><span><i class="fa fa-stop"></i></span></li>-->
-    <li><span><i class="fa fa-play"></i></span></li>
-    <li><span><i class="fa fa-cog"></i></span></li>
-    <li><span><i class="fa fa-download"></i></span></li>
-    <li><span><i class="fa fa-github-alt"></i></span></li>
+<li><span><i class="fa fa-circle"></i></span></li>
+<!--<li><span><i class="fa fa-stop"></i></span></li>-->
+<li><span><i class="fa fa-play"></i></span></li>
+<li><span><i class="fa fa-cog"></i></span></li>
+<li><span><i class="fa fa-download"></i></span></li>
+<li><span><i class="fa fa-github-alt"></i></span></li>
   </ul>
-    `;
+`;
 
     root.innerHTML = style + html;
 
