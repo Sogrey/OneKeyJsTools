@@ -80,7 +80,7 @@ function initHtmlElements() {
   <style type="text/css">
   #${SogreyRecordHtmlRootId} {width: 4em;height: 4em;margin: 4em auto 0;font-size: 1em;line-height: 4em;color: #fff;font-weight: 700;text-transform: uppercase;top: 0;bottom: 0;right: 0em;position: fixed;align-items: center;z-index: 99999;  }
   #${SogreyRecordHtmlRootId} ul {list-style: none;margin: 0;padding: 0;perspective: 1000px;  }
-  #${SogreyRecordHtmlRootId} ul li {display: block;background-color: #333;height: 4em;padding: 1em 1.5em;position: relative;-webkit-transition: webkit-transform 0.5s, background-color 0.5s, color 0.5s;transition: transform 0.5s, background-color 0.5s, color 0.5s;  }
+  #${SogreyRecordHtmlRootId} ul li {display: block;background-color: #333;height: 4em;position: relative;-webkit-transition: webkit-transform 0.5s, background-color 0.5s, color 0.5s;transition: transform 0.5s, background-color 0.5s, color 0.5s;  }
   #${SogreyRecordHtmlRootId} ul li:nth-child(1) {background-color: #00aced;  }
   #${SogreyRecordHtmlRootId} ul li:nth-child(2) {background-color: #3b5998;transform: rotateY(-90deg);transform-origin: center right;  }
   #${SogreyRecordHtmlRootId} ul li:nth-child(3) {background-color: #00a300;transform: rotateY(-90deg);transform-origin: center right;  }
