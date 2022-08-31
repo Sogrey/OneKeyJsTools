@@ -75,13 +75,13 @@ function initHtmlElements() {
   <style type="text/css">
   #${SogreyRecordHtmlRootId} {width: 4em;height: 4em;margin: 4em auto 0;font-size: 1em;line-height: 4em;color: #fff;font-weight: 700;text-transform: uppercase;top: 0;bottom: 0;right: 0em;position: fixed;align-items: center;z-index: 99999;user-select: none;cursor: pointer;  }
   #${SogreyRecordHtmlRootId} ul {list-style: none;margin: 0;padding: 0;perspective: 1000px;  }
-  #${SogreyRecordHtmlRootId} ul li {display: block;background-color: #333;height: 4em;position: relative;-webkit-transition: webkit-transform 0.5s, background-color 0.5s, color 0.5s;transition: transform 0.5s, background-color 0.5s, color 0.5s;background-image: url("${base64Image}");background-size: 260px 40%;background-repeat: no-repeat; }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(1) {background-color: #00aced;background-position: 16px 16px;  } 
-  #${SogreyRecordHtmlRootId} ul li.stop:nth-child(1) {background-position: -82px 16px;  }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(2) {background-color: #3b5998;transform: rotateY(-90deg);transform-origin: center right;background-position: -36px 16px;  }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(3) {background-color: #00a300;transform: rotateY(-90deg);transform-origin: center right;background-position: -179px 16px;  }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(4) {background-color: #1e7145;transform: rotateY(-90deg);transform-origin: center right;background-position: -132px 16px;  }
-  #${SogreyRecordHtmlRootId} ul li:nth-child(5) {background-color: #ffc40d;transform: rotateY(-90deg);transform-origin: center right;background-position: -224px 16px;  }
+  #${SogreyRecordHtmlRootId} ul li {display: block;background-color: #333;height: 4em;position: relative;-webkit-transition: webkit-transform 0.5s, background-color 0.5s, color 0.5s;transition: transform 0.5s, background-color 0.5s, color 0.5s;background-image: url("${base64Image}");background-size: 260px 36%;background-repeat: no-repeat; }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(1) {background-color: #00aced;background-position: 20px 16px;  } 
+  #${SogreyRecordHtmlRootId} ul li.stop:nth-child(1) {background-position: -78px 16px;  }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(2) {background-color: #3b5998;transform: rotateY(-90deg);transform-origin: center right;background-position: -32px 16px;  }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(3) {background-color: #00a300;transform: rotateY(-90deg);transform-origin: center right;background-position: -175px 16px;  }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(4) {background-color: #1e7145;transform: rotateY(-90deg);transform-origin: center right;background-position: -128px 16px;  }
+  #${SogreyRecordHtmlRootId} ul li:nth-child(5) {background-color: #ffc40d;transform: rotateY(-90deg);transform-origin: center right;background-position: -220px 16px;  }
   #${SogreyRecordHtmlRootId} ul li.show:nth-child(2) {transform: rotateY(0deg);  }
   #${SogreyRecordHtmlRootId} ul li.show:nth-child(3) {transform: rotateY(0deg);  }
   #${SogreyRecordHtmlRootId} ul li.show:nth-child(4) {transform: rotateY(0deg);  }
