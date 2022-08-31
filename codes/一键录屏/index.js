@@ -133,7 +133,7 @@ var videoBuffer = [] //保存的视频数据
 
 // 初始化请求用户授权监控
 function startRecord() {
-    if (!navigator.mediaDevices && !navigator.mediaDevices.getDisplayMedia) {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
         alert("当前浏览器不支持屏幕捕捉")
         return
     }
