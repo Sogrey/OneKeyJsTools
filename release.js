@@ -52,7 +52,7 @@ function buildOne(flieIn, fileOut) {
         console.log('result.warnings', flieIn, result.warnings); // [ 'Dropping unused variable u [0:1,18]' ]
     // console.log(result.code);  
 
-    var CONSOLE_BADGE = 'console.log("\\n %c ' + title + ' %c @Sogrey \\n\\n","color: #fadfa3; background: #030307; padding:5px 0;","background: #c58c0f; padding:5px 0;");';
+    var CONSOLE_BADGE = 'console.log("\\n %c ' + title + ' %c '+version+' %c @Sogrey \\n\\n","color: #fadfa3; background: #030307; padding:5px 0;","color: #fa00fa; background: #030307; padding:5px 0;","background: #c58c0f; padding:5px 0;");';
 
     const data = CONSOLE_BADGE + result.code;
     var obfuscationOptions = {
