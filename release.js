@@ -22,11 +22,17 @@ function formatDuring(mss) {
 function buildOne(flieIn, fileOut) {
     var origCode = fs.readFileSync(flieIn, 'utf8');
 
-    var reg = /(?<=\/\*\*title:).*(?=\*\*\/)/;
+    var regTitle = /(?<=\/\*\*title:).*(?=\*\*\/)/;
+    var regVersion = /(?<=\/\*\*version:).*(?=\*\*\/)/; /**version:1.0.1**/
     // var result = reg.exec("/**title:简书-阅读模式**/");
-    var result = reg.exec(origCode);
-    var title = result[0];
+    var resultTitle = regTitle.exec(origCode);
+    var title = resultTitle[0];
+    var resultVersion = regVersion.exec(origCode);
+    var version = resultVersion ? resultVersion[0] : "";
     var name = `/**title:${title}**/`;
+    if (version && version.length > 0) {
+        name = `/**title:${title}@${version}**/`;
+    }
 
     console.log('正在压缩', title, flieIn);
 
@@ -48,7 +54,7 @@ function buildOne(flieIn, fileOut) {
 
     var CONSOLE_BADGE = 'console.log("\\n %c ' + title + ' %c @Sogrey \\n\\n","color: #fadfa3; background: #030307; padding:5px 0;","background: #c58c0f; padding:5px 0;");';
 
-    const data =  CONSOLE_BADGE + result.code;
+    const data = CONSOLE_BADGE + result.code;
     var obfuscationOptions = {
         compact: true,
         // controlFlowFlattening: true,

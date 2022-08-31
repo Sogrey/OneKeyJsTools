@@ -2,6 +2,7 @@
  * 暴力移除广告
  */
 /**title:暴力移除广告**/ // <--- 此行必需，不得缺失
+/**version:1.0.0**/ // <--- 版本号
 
 // 在此追加广告div的class或id css选择器
 var adsClasses = [

@@ -2,7 +2,7 @@
  * 网页已选中文本内容复制到剪贴板
  */
 /**title:网页已选中文本内容复制到剪贴板**/ // <--- 此行必需，不得缺失
-
+/**version:1.0.0**/ // <--- 版本号
 
 /** tools */
 var getElement = function (eleId) {

@@ -4,6 +4,7 @@
  * 灵感来自于：https://gitee.com/imba97/js，此脚本有所修改
  */
 /**title:拖拽安装**/ // <--- 此行必需，不得缺失
+/**version:1.0.0**/ // <--- 版本号
 
 /** tools */
 var getElement = function (eleId) {

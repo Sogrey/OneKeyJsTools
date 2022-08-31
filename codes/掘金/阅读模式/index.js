@@ -10,6 +10,7 @@
  *
  */
 /**title:掘金-阅读模式**/ // <--- 此行必需，不得缺失
+/**version:1.0.0**/ // <--- 版本号
 
 /** tools */
 var getElement = function (eleId) {

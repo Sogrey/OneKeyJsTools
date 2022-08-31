@@ -1,4 +1,6 @@
 /**title:页面变灰**/ // <--- 此行必需，不得缺失
+/**version:1.0.0**/ // <--- 版本号
+
 // https://j11y.io/demos/grayscale/grayscale.js
 var styleId = 'sogrey-htmlGray';
 var eleId = `#${styleId}`;

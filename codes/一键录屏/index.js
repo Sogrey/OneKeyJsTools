@@ -1,5 +1,6 @@
 
 /**title:一键录屏**/ // <--- 此行必需，不得缺失
+/**version:1.0.1**/ // <--- 版本号
 
 /** tools */
 var getElement = function (eleId) {
