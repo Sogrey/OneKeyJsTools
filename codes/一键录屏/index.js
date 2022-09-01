@@ -224,6 +224,9 @@ function replay() {
     video.id = SogreyRecordHtmlRootId + "_preview",
     video.onerror = function() {
         alert("播放出错了，可能因为安全策略，该域名拒绝从“blob”加载媒体！可正常下载观看！");
+        if (video) {
+            video.parentNode.removeChild(video);
+        }
     };
     video.src = window.URL.createObjectURL(blob);
     video.srcObject = null;
