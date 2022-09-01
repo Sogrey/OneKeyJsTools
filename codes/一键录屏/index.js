@@ -221,7 +221,10 @@ function replay() {
     const video = document.createElement("video");
     document.body.append(video)
     const blob = new Blob(videoBuffer, { type: "video/webm" });
-    video.id = SogreyRecordHtmlRootId + "_preview"
+    video.id = SogreyRecordHtmlRootId + "_preview",
+    video.onerror = function() {
+        alert("播放出错了，可能因为安全策略，该域名拒绝从“blob”加载媒体！可正常下载观看！");
+    };
     video.src = window.URL.createObjectURL(blob);
     video.srcObject = null;
     video.controls = true;
