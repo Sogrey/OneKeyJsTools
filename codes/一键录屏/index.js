@@ -135,7 +135,7 @@ var videoBuffer = [] //保存的视频数据
 // 初始化请求用户授权监控
 function startRecord() {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
-        alert("当前浏览器不支持屏幕捕捉")
+        alert("当前浏览器不支持屏幕捕捉。\n\n当您看到这个提示，极大可能是由于浏览器的安全策略限制，在以下几种情况中可以正常使用：\n 1. 地址为 localhost://\n 2. 地址为 https://\n 3. 本地文件访问 file:///");
         return
     }
     reset()
@@ -223,7 +223,7 @@ function replay() {
     const blob = new Blob(videoBuffer, { type: "video/webm" });
     video.id = SogreyRecordHtmlRootId + "_preview",
     video.onerror = function() {
-        alert("播放出错了，可能因为安全策略，该域名拒绝从“blob”加载媒体！可正常下载观看！");
+        alert("播放出错了，可能因为安全策略，该域名拒绝从“blob”加载媒体！可正常下载后观看！");
         if (video) {
             video.parentNode.removeChild(video);
         }
