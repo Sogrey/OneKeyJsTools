@@ -7,7 +7,7 @@
  *   https://blog.csdn.net/weixin_39709134/article/details/120230960
  */
 /**title:CSDN-阅读模式**/ // <--- 此行必需，不得缺失
-/**version:1.0.1**/ // <--- 版本号
+/**version:1.0.2**/ // <--- 版本号
 
 var CsdnBlogHost = 'https://blog.csdn.net/';
 var regCsdnBlogHost = 
@@ -45,6 +45,7 @@ function setMainDivStyle() {
         ".nodata .container {",
         "    position: relative;",
         "    margin:0 auto;",
+        "    width: 100%;",
         "}",
         ".nodata .container main {",
         "    width: 90%;",

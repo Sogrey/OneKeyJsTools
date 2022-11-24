@@ -1,5 +1,5 @@
 /**title:页面变灰**/ // <--- 此行必需，不得缺失
-/**version:1.0.0**/ // <--- 版本号
+/**version:1.0.1**/ // <--- 版本号
 
 // https://j11y.io/demos/grayscale/grayscale.js
 var styleId = 'sogrey-htmlGray';
@@ -34,4 +34,11 @@ function deleteGrayStyle() {
     if (!style) return;
 
     style.parentNode.removeChild(style);
+}
+
+var style = getElement(eleId);
+if (style) {
+    deleteGrayStyle()
+} else {
+    appendGrayStyle()
 }

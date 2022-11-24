@@ -7,7 +7,7 @@
  *   https://www.jianshu.com/p/cac06311888c
  */
 /**title:简书-阅读模式**/ // <--- 此行必需，不得缺失
-/**version:1.0.0**/ // <--- 版本号
+/**version:1.0.1**/ // <--- 版本号
 
 /** tools */
 var getElement = function (eleId) {
@@ -39,6 +39,7 @@ if (regJianshuHost.test(document.location.href)) { // 简书
     var firstSection = getElement('section');
     firstSection.style.display = "block";
     firstSection.style.width = "100%";
+    firstSection.parentElement.style.width = "910px";
 
     // 隐藏右侧
     displayNoneElements(getElementAll('aside'));
