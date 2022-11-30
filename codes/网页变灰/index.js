@@ -1,5 +1,5 @@
 /**title:页面变灰**/ // <--- 此行必需，不得缺失
-/**version:1.0.1**/ // <--- 版本号
+/**version:1.0.2**/ // <--- 版本号
 
 // https://j11y.io/demos/grayscale/grayscale.js
 var styleId = 'sogrey-htmlGray';
@@ -17,6 +17,10 @@ function appendGrayStyle() {
     style.innerHTML = [
         "html {",
         "    filter: grayscale(100%);/*火狐*/",
+        "    -webkit-filter: grayscale(100%); ",
+        "    -moz-filter: grayscale(100%);",
+        "    -ms-filter: grayscale(100%);",
+        "    -o-filter: grayscale(100%);",
         "    -webkit-filter:grayscale(100%);/*chrome*/",
         "}",
         "body{",
