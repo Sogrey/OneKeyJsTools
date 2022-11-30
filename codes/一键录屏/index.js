@@ -92,13 +92,13 @@ function initHtmlElements() {
 `;
 
     const html = `
-  <ul>
+<ul>
 <li></li>
 <li></li>
 <li></li>
 <li></li>
 <li></li>
-  </ul>
+</ul>
 `;
 
     root.innerHTML = style + html;
