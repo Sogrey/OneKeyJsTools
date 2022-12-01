@@ -7,7 +7,7 @@
  *   https://blog.csdn.net/weixin_39709134/article/details/120230960
  */
 /**title:CSDN-阅读模式**/ // <--- 此行必需，不得缺失
-/**version:1.0.3**/ // <--- 版本号
+/**version:1.0.4**/ // <--- 版本号
 
 var CsdnBlogHost = 'https://blog.csdn.net/';
 var regCsdnBlogHost = 
