@@ -7,7 +7,7 @@
  *   https://blog.csdn.net/weixin_39709134/article/details/120230960
  */
 /**title:CSDN-阅读模式**/ // <--- 此行必需，不得缺失
-/**version:1.0.4**/ // <--- 版本号
+/**version:1.0.5**/ // <--- 版本号
 
 var CsdnBlogHost = 'https://blog.csdn.net/';
 var regCsdnBlogHost = 
@@ -107,9 +107,9 @@ if (!regCsdnBlogHost.test(document.location.href)) { // 非CSDN Blog
     displayNoneElements(getElementAll('.blog-footer-bottom'));
 
     // 自动展开被折叠部分
-    let hidePreCodeBt = getElement('.hide-preCode-bt');
-    if(hidePreCodeBt){
-        hidePreCodeBt.click();
+    let hidePreCodeBts = getElementAll('.hide-preCode-bt');
+    if(hidePreCodeBts && hidePreCodeBts.length > 0){
+        hidePreCodeBts.forEach(item=>item.click());        
     }
     
 }
