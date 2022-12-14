@@ -7,7 +7,7 @@
  *   https://www.jianshu.com/p/cac06311888c
  */
 /**title:简书-阅读模式**/ // <--- 此行必需，不得缺失
-/**version:1.0.1**/ // <--- 版本号
+/**version:1.0.2**/ // <--- 版本号
 
 /** tools */
 var getElement = function (eleId) {
@@ -39,7 +39,13 @@ if (regJianshuHost.test(document.location.href)) { // 简书
     var firstSection = getElement('section');
     firstSection.style.display = "block";
     firstSection.style.width = "100%";
-    firstSection.parentElement.style.width = "910px";
+    firstSection.style.backgroundColor = "#ffe8ce";
+    firstSection.parentElement.style.width = "80%";
+    firstSection.parentElement.style.margin = "0 auto";
+    firstSection.parentElement.parentElement.style.width = "100%";
+
+    // 隐藏点赞收藏按钮
+    displayNoneElements(getElementAll('._3Pnjry'));
 
     // 隐藏右侧
     displayNoneElements(getElementAll('aside'));
