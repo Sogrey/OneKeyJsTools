@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频录制</title>
+    <style>
+        .app {display: flex;justify-content: center; align-items: center;}
+        .record-btn {margin: 0 10px;}
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <audio controls class="audio-player"></audio>
+        <button class="record-btn">录音</button>
+        <a id="download" download="录音.ogg"></a>
+    </div>
+</body>
+<script>
+    const recordBtn = document.querySelector(".record-btn")
+    const player = document.querySelector(".audio-player")
+    const download = document.querySelector('#download')
+    if (navigator.mediaDevices.getUserMedia) {
+        let chunks = []
+        const constraints = { audio: true }
+        navigator.mediaDevices.getUserMedia(constraints).then(
+            stream => {
+                const mediaRecorder = new MediaRecorder(stream)
+                recordBtn.onclick = () => {
+                    if (mediaRecorder.state === "recording") {
+                        mediaRecorder.stop()
+                        recordBtn.textContent = "录音结束"
+                    } else {
+                        mediaRecorder.start()
+                        recordBtn.textContent = "录音中..."
+                    }
+                }
+                mediaRecorder.ondataavailable = e => {
+                    chunks.push(e.data)
+                }
+                mediaRecorder.onstop = e => {
+                    const blob = new Blob(chunks, { type: "audio/ogg; codecs=opus" })
+                    chunks = []
+                    const audioURL = window.URL.createObjectURL(blob)
+                    player.src = audioURL
+                    download.innerHTML = '下载'
+                    download.href = audioURL
+                }
+            },
+            () => {
+                console.error("授权失败！");
+            }
+        );
+    } else {
+        console.error("浏览器不支持 getUserMedia");
+    }
+</script>
+
+</html>
