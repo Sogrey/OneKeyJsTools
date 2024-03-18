@@ -49,6 +49,7 @@ if (regBilibiliVideoHostWWW.test(document.location.href) || regBilibiliVideoHost
     console.log(__INITIAL_STATE__.epInfo ? __INITIAL_STATE__.epInfo : __INITIAL_STATE__.videoData)
 
 
+    var result;
     if (__INITIAL_STATE__.epInfo) {
         // TODO
         console.log("\/\/ TODO epInfo 待实现");
@@ -71,6 +72,26 @@ if (regBilibiliVideoHostWWW.test(document.location.href) || regBilibiliVideoHost
         console.log("当前视频cid", videoData.embedPlayer.cid);
         console.log("当前视频为第几集", videoData.embedPlayer.p);
 
+        result = {
+            title: videoData.title,
+            desc: videoData.desc,
+            pic: videoData.pic,
+
+            dynamic: videoData.dynamic,
+
+            owner: {
+                name: videoData.owner.name,
+                mid: videoData.owner.mid,
+                face: videoData.owner.face,
+            },
+
+            videos: videoData.videos,
+            bvid: videoData.embedPlayer.bvid,
+            aid: videoData.embedPlayer.aid,
+            cid: videoData.embedPlayer.cid,
+            p: videoData.embedPlayer.p,
+        }
+
         var pages = videoData.pages;
         var pagesInfo = [];
 
@@ -89,7 +110,11 @@ if (regBilibiliVideoHostWWW.test(document.location.href) || regBilibiliVideoHost
             });
 
             console.table(pagesInfo);
+
+            result.pages = pagesInfo;
         }
+
+        console.log(result);
     }
 } else {
     alert(`此插件仅支持 ${BilibiliVideoHostWWW} 和 ${BilibiliVideoHost}`);
