@@ -10,12 +10,11 @@
 /**version:1.0.0**/ // <--- 版本号
 
 var CsdnBlogHost = 'https://blog.csdn.net/';
+var JuejinBlogHost = 'https://juejin.cn/post/';
 var regCsdnBlogHost =
     /https:\/\/(.*?.|)blog\.csdn\.net\//g;
-/https:\/\/blog\.csdn\.net\//g;
-
-// var location = document.location;
-// var origin = document.location.origin;
+var regJuejinBlogHost =
+    /https:\/\/juejin\.cn\/post/g;
 
 var TurndownService = (function () {
     'use strict';
@@ -1033,6 +1032,9 @@ var toast = function (params) {
     }
     var el = document.createElement("div");
     el.setAttribute("class", "web-toast");
+    if (params.type == 'error') {
+        el.setAttribute("class", "web-toast web-toast-error");
+    }
     el.innerHTML = params.message;
     document.body.appendChild(el);
     el.classList.add("fadeIn");
@@ -1061,12 +1063,9 @@ var insertStyle = function (css) {
     document.head.appendChild(styleElement);
 }
 
-insertStyle(`@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@-webkit-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@-moz-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@-o-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@-ms-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@-webkit-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@-moz-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@-o-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@-ms-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}.web-toast{position:fixed;background:rgba(0,0,0,0.7);color:#fff;font-size:14px;line-height:1;padding:10px;border-radius:3px;left:50%;top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);z-index:9999;white-space:nowrap;}.fadeOut{animation:fadeOut .5s;}.fadeIn{animation:fadeIn .5s;}`);
+insertStyle(`@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@-webkit-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@-moz-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@-o-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@-ms-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@-webkit-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@-moz-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@-o-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@-ms-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}.web-toast{position:fixed;background:rgba(0,0,0,0.7);color:#fff;font-size:14px;line-height:1;padding:10px;border-radius:3px;left:50%;top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);z-index:9999;white-space:nowrap;}.fadeOut{animation:fadeOut .5s;}.fadeIn{animation:fadeIn .5s;}.web-toast-error{background:rgba(255,0,0,0.7);}`);
 
-if (!regCsdnBlogHost.test(document.location.href)) { // 非CSDN Blog
-    alert(`此插件仅支持 ${CsdnBlogHost}`);
-} else {
-
+if (regCsdnBlogHost.test(document.location.href)) { // CSDN Blog
     // 创建 TurndownService 实例
     const turndownService = new TurndownService();
 
@@ -1084,5 +1083,31 @@ if (!regCsdnBlogHost.test(document.location.href)) { // 非CSDN Blog
     toast({
         message: "复制成功",
         time: 2000
+    })
+    // } else if (regJuejinBlogHost.test(document.location.href)) { // 掘金博客
+    //     // 创建 TurndownService 实例
+    //     const turndownService = new TurndownService();
+
+    //     // 要转换的 HTML 内容
+    //     const htmlContent = document.querySelectorAll("article")[0].innerHTML;
+
+    //     // 使用 Turndown 进行转换
+    //     const markdown = turndownService.turndown(htmlContent);
+
+    //     // 输出 Markdown
+    //     console.log(markdown);
+
+    //     copyToClipboard(markdown)
+
+    //     toast({
+    //         message: "复制成功",
+    //         time: 2000
+    //     })
+} else {
+    console.log(`爬取失败：此插件仅支持 ${CsdnBlogHost}`)
+    toast({
+        message: `爬取失败：此插件仅支持 ${CsdnBlogHost}`,
+        time: 2000,
+        type: 'error'
     })
 }
