@@ -4,7 +4,7 @@
  * 灵感来自于：https://gitee.com/imba97/js，此脚本有所修改
  */
 /**title:拖拽安装**/ // <--- 此行必需，不得缺失
-/**version:1.0.1**/ // <--- 版本号
+/**version:1.0.3**/ // <--- 版本号
 
 /** tools */
 var getElement = function (eleId) {
@@ -39,11 +39,11 @@ var jsEndWith = ".min.js"; // 以 .min.js 结束的压缩js
 
 var href = document.location.href;
 
-function createStyle(jsMinText) {
+function createStyle (jsMinText) {
     // 创建 style
     var styleEle = document.createElement('style');
     styleEle.innerText =
-        ".OneKeyInstall_a { position:absolute;top:7px;left:200px;width:100px;height:30px;line-height:30px;text-align:center;background-color:#24aee6;cursor:move;font-size:0;border-radius:5px;text-decoration:none !important;z-index:999999;margin-left: 30px;} .OneKeyInstall_a::before { content:'拖到收藏夹';font-size:16px;color:#FFF; }";
+        ".OneKeyInstall_a {display: inline-block;margin-right: 30px;width:100px;height:30px;line-height:30px;text-align:center;background-color:#24aee6;cursor:move;font-size:0;border-radius:5px;text-decoration:none !important;z-index:999999;margin-left: 30px;} .OneKeyInstall_a::before { content:'拖到收藏夹';font-size:16px;color:#FFF; }";
     document.head.appendChild(styleEle);
 
     // 创建 a 标签
@@ -63,19 +63,22 @@ function createStyle(jsMinText) {
 }
 
 if (href.startsWith(githubMinJsHost) && href.endsWith(jsEndWith)) { // Github
-    var divHere = document.querySelector('div.text-mono');
-    var jsMinText = document.querySelector('.blob-code').innerText;
+    var divHere = document.querySelector('div.react-code-view-header-element--wide');
+    // var jsMinText = document.querySelector('.blob-code').innerText;
+    var jsMinText = document.querySelector('#read-only-cursor-text-area').value;
 
     var aEle = createStyle(jsMinText);
-    divHere.appendChild(aEle);
-    
+    // divHere.appendChild(aEle);
+    divHere.insertBefore(aEle, divHere.firstChild);
+
 } else if (href.startsWith(giteeMinJsHost) && href.endsWith(jsEndWith)) { // Gitee
-    var divHere = document.querySelector('.contributor-description');
+    var divHere = document.querySelector('.options');
     var jsMinText = document.querySelector('.highlight .line').innerText;
 
     var aEle = createStyle(jsMinText);
-    divHere.appendChild(aEle);
-    
+    // divHere.appendChild(aEle);
+    divHere.insertBefore(aEle, divHere.firstChild);
+
 } else {
     alert(`此插件仅支持 ${githubMinJsHostPath} 和 ${giteeMinJsHostPath}`);
 }
