@@ -72,7 +72,7 @@ if (href.startsWith(githubMinJsHost) && href.endsWith(jsEndWith)) { // Github
     divHere.insertBefore(aEle, divHere.firstChild);
 
 } else if (href.startsWith(giteeMinJsHost) && href.endsWith(jsEndWith)) { // Gitee
-    var divHere = document.querySelector('.options');
+    var divHere = document.querySelector('.repo-action-list-right');
     var jsMinText = document.querySelector('.highlight .line').innerText;
 
     var aEle = createStyle(jsMinText);
