@@ -4,7 +4,7 @@
 /**title:html内容转化为markdown**/ // <--- 此行必需，不得缺失
 /**version:1.0.0**/ // <--- 版本号
 
-let isPrimitiveString = (value) => typeof value === "string"; // 判断是否为字符串
+var isPrimitiveString = (value) => typeof value === "string"; // 判断是否为字符串
 /**
  * 把 html 内容转化为 markdown 格式 V1.0
  * [html2md/html2md_1.0.js at main · kohunglee/html2md](https://github.com/kohunglee/html2md/blob/main/html2md_1.0.js)
