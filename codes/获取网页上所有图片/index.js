@@ -29,7 +29,7 @@ var getAllElement = function (selector) {
     return document.querySelectorAll(selector);
 }
 //[绑定监听事件]
-function addMethod(node, type, method) {
+function addMethod (node, type, method) {
     if (node.addEventListener) { // IE9以下不兼容
         node.addEventListener(type, method, false)
     } else if (node.attachEvent) { // IE独有
@@ -40,7 +40,7 @@ function addMethod(node, type, method) {
 }
 
 //[移除监听事件]
-function removeMethod(node, type, method) {
+function removeMethod (node, type, method) {
     if (node.removeEventListener) { // IE9以下不兼容
         node.removeEventListener(type, method, false)
     } else if (node.detachEvent) { // IE独有
@@ -49,7 +49,7 @@ function removeMethod(node, type, method) {
         node[`on${type}`] = method;
     }
 }
-function appendStyle() {
+function appendStyle () {
     if (getElement(eleId)) return;
 
     var style = document.createElement('style');
@@ -63,7 +63,7 @@ function appendStyle() {
         "    top: 0;",
         "    opacity: 0.7;",
         "    background-color: black;",
-        "    z-index: 99999;",
+        "    z-imgIndex: 99999;",
         "}",
         "/*浮层,可随意设置大小宽高,但是z-index必须比上面fullScreen大才能显示出来*/",
         "#floatLayer{",
@@ -72,7 +72,7 @@ function appendStyle() {
         "    height: 80%;",
         "    left: 10%;",
         "    top: 10%;",
-        "    z-index: 100000;",
+        "    z-imgIndex: 100000;",
         "    overflow-y: scroll;",
         "}",
 
@@ -252,15 +252,16 @@ imgPreview.classList.add("imgPreview");
 imgPreview.innerHTML = '<img class="preview" src=""><span class="img_index_show"></span><img class="pre_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA31JREFUaEPFmVuITlEcxdfyJMQTIU9E8UJKeXApD5JREibXaBj3Qm4Jk0tpMm7JJTOEaNxvMSgpKZISSUmkpEhKSkpKS3v6mz6fmTn7f75zvtmvZ6291+/ss/fZF6KDiqQ+AO4AOEOyLm0MpjWW4pPUDcBtAKOsniUkj6aps6MAmgBMLAo8m2SjF6LsAJLOApjRRtApJK95IMoKIKkeQHU7AX8ACBB3YyHKBiBpN4A1EcE+AZhG8lGEFmUBkFQDYFtMINO8AVBJ8nmSJ3cASasA7EsKUvT8rQE8S/LlCiCpCsDxpBBFzz9b+AcxvtwAJFUCOB8TokATBnH4dG7F+nIBkBTm+DDXe8sMki7ozAEkjQFwA0B3Z/pqksecnmxnIUnDAVwH0M8ZZDXJ/U5PszyzHpA0CMBVAEOcQWpI7nB6WuSZAEjqC+AygJHOIHUk1zs9/8hLBpAUvvWLAMY7gxwhuczp+U9eEoCkTgAuAJjqDBL2AHOdnlblpQKcBDDPGSQM8jDX/3L6sgWQdBDAcmeIexb+q9PXpjxVD0iqBbDBGeKJhX/v9LUrdwNI2gzAO+29svAvswzv/g+kXFl+sPCPsw7vApC0EECDM8Q3Cx+9w3LWH/cnlhT2sGEv6ym/LfwVj8mrjRoDkrrYfF/hbOAUyflOj0seBRBqlNTLIMa6WgAOkVzh9ETLowEMYoBBhFWnp9SS3OgxxGpdAAYxzCAGxjZiuk0kdzo9iXI3gEGMNojeiS38K1hJ8oDT0648FYBBhG1jWMh1dQaqInnC6WlTnhrAINJs3GXT66UsIEoCMIgFALx72e8GEY7XSyolAxhEmsOrjwbxsBSCTAAMYguA7c4wrw3ihdPXIs8MwCB2AVjnDPPUIN45fc3yTAEM4jCApc4w9w3ii9OXPYBBnAYwxxkmHIaFreZPjy/zHvjbuKRw0zLZEyaseEnO8njyBOhs56PjPIEA1JNcHOvJDcA+pZ4GMSI2kOn2kFwb48kVwCD6A7gJYHBMoALNVpKJtzq5AxjEUIOIPfTdSzLmPi2fWai1Ny0pXGqHnuiR0BMNJBfF9lZZeqBgZppgYyIcSbZWzpGcGRs+lx9ZUuOSptsyvFjaRHJSkr/4eVl7oKAnii//woXeRJLhjsxVOgTABvZKAOFWJqyFKkiG20l36TAAgwjHlI0kUy3kQh1/ANYnBkBHjxXiAAAAAElFTkSuQmCC"><img class="next_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAz9JREFUaEPNmkuIj2EYxc+xIRYWlCSxUKQsKBaKYqHcZtIwxq1EY1JyHQo1DDUWwwibCbEhMYRJZCUkC+WyUAorCUtiffSaR0YzZt7n+b6v8a7PeZ7z+3+39/InCgxJSwBsILmmQJlCVkbdkuYBuAdgFICzJJuitYr4QgCSZgG4A2B8r+bHSe4tEibidQNImgbgFoCp/TRsIXk0EiTqcQFImgjgBoDZAzTcSfJUNJDXlw0gaQyAawAWZjTZRPJihq6wJAtA0ggLv9zRcSXJdLUqHbkADQCuOJMIwGKS950+lzwLIFWU1Jhel67qwFcAS0k+cfqy5dkABrELQEd29R7hBwDLSb5y+rLkLgCDaAHQmlX9j+g1gFqS752+QeVuAINoB9A8aPW/BU8BrCD5xekbUB4CMIhOAN7pQ3qg60j+KAsiDGAQlwCsc4bpIlnv9PxTXhRguH0fapyBLpDc7PT0Ky8EYFdhrEEscAY6TXKH09NHXhjAICYbxEBzpP6ytpE8WASiFACDmGEQabbqGQdIHvMYemtLAzCIuQYxwRloO8kzTs8veakABrHIIEY7A4VmsKUDGESdQQxzQtST7PJ4KgEwiI0AvGuC9IFbRTKttbNGZQAGsQ2A997+BGA1ycc5BJUCGMR+AG05YXpp3gJIt9PLwXz/K8A7A3gxpACSIrdQmq2mX//RYOEreY3+biop+hCn8HdzwlcGICn6Gm0geTU3fCUAkqIfskaS5z3hSweQFJ1K7CZ50hu+VABJ0cncIZJHIuFLA5AUnU63k9wXDV8KgKTogqaT5NYi4QsDSIouKS+TXF80fBkAkUV9N8naMsIXApAU2VZ5AKCG5PchBZAU2dh6ZuE/lxU+dAUkRbYW31j4NMssdbhmo5Iim7sfLfzzUpNbsWyA4Pb6Nwv/sIrw2beQpOgBR3pg02lmZSPrCtgR0/V0WOFIspak91THUb5HmgWQhPbFTWde8zO6NJH0nuZklO0ryQYwiEkAbgKYOUC3ZpInQmkCJheAQUwHcBvAlH76tZI8HMgRtrgBDGIOgG4A43p17iC5J5wkaAwBGETaTk9vmJEAzpHcEsxQyBYGMIhl6YRmKP9u8xPu7QBAtNG/4gAAAABJRU5ErkJggg==">';
 floatLayer.appendChild(imgPreview);
 
-var imageSelector = "#gallery-2 img"
+var imageSelector = ".tupian-detail-content img" // "#gallery-2 img"
 var isImgPrevired = false;
 var currentImgIndex = 0;
 
 var result = Object.values(getAllElement(imageSelector)).filter(isImage).map(img => {
-    var src = img.getAttribute('src'); // 懒加载
+    var src = img.getAttribute('data-pic-base64'); // 懒加载
+    // 'data-pic-base64' == src && (src = src.replace("data-pic-base64,", ""));
     src = src.replace("-285x285", "-scaled");
     return {
-        src: src,
+        src: "//" + document.location.hostname + "/" + src,
         title: img.title,
     }
 })
@@ -268,7 +269,7 @@ var result = Object.values(getAllElement(imageSelector)).filter(isImage).map(img
 console.log(result);
 
 if (result.length > 0) {
-    var index = 0;
+    var imgIndex = 0;
     result.forEach(img => {
         var item = document.createElement("div");
         item.classList.add("item");
@@ -279,17 +280,17 @@ if (result.length > 0) {
 
         addMethod(imgEle, 'click', function () {
             isImgPrevired = true;
-            currentImgIndex = index;
+            currentImgIndex = imgIndex;
             getElement("#floatLayer .imgPreview>img.preview").src = img.src;
             getElement("#floatLayer .imgPreview").style.display = "block";
             getElement("#floatLayer .imgPreview>span.img_index_show").innerHTML = (currentImgIndex + 1) + "/" + result.length;
         })
 
-        if (index % 4 == 0) {
-            container.style.height = 1.2 * (index * 0.25 + 1) * window.innerWidth * 0.8 * 0.25 / 0.9 + "px";
+        if (imgIndex % 4 == 0) {
+            container.style.height = 1.2 * (imgIndex * 0.25 + 1) * window.innerWidth * 0.8 * 0.25 / 0.9 + "px";
         }
 
-        index++;
+        imgIndex++;
     })
 }
 
@@ -315,7 +316,7 @@ addMethod(getElement("#fullScreen .close"), 'click', function () {
                 timer = undefined;
             } catch (error) { }
         }
-        getElement("#floatLayer .imgPreview").style.display = "none";        
+        getElement("#floatLayer .imgPreview").style.display = "none";
     } else {
         if (fullScreen) fullScreen.parentElement.removeChild(fullScreen);
         if (floatLayer) floatLayer.parentElement.removeChild(floatLayer);
